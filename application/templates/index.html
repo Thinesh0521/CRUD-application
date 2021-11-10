@@ -1,13 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Flask CRUD Application</title>
-</head>
-<body>
-
-<h1>Hellow From Template</h1>
-
-</body>
-
+<center> <h2> Student Information System </h2>
+    <br>
+    <br>
+    <br>
+    <a href="{{ url_for('saveRecord') }}"> New Record </a>
+    
+    <form action="{{ url_for('filterrecords') }}" method="POST">
+    <select name="dept">
+                <option value="Devops"> Devops </option>
+                <option value="Software"> Software engineering </option>
+                <option value="Networking"> Networking Engineering </option>
+                <option value="Database"> Database </option>
+                <option value="all"> All Courses </option>
+    
+                </select>
+                <input type="submit" value="Filter">
+    </form>
+    <table>
+        <tr bgcolor='Green'>
+            
+            <td > Name </td>
+            <td > Date of Enrolled </td>
+            <td > Course</td>
+            
+    
+        </tr>
+        {%  for record in records %}
+    
+            <tr>
+                    <td> <a href="{{ url_for('Studentdetails', studno = record.studno) }}"> {{ record.name }}</a> </td>
+                    <td> {{record.course}} </td>
+                    <td> {{record.date}} </td>
+                    <td> <a href="{{ url_for('editRecordForm', studno = record.studno) }}"> edit </a>, 
+                        <a href="{{ url_for('deleteStudent', studno = record.studno) }}"> delete </a>
+                    </td>
+            </tr>
+    
+        {% endfor %}
+    </table>
 </html>
