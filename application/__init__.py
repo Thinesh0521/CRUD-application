@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import getenv
 import pymysql
 
-#Configure Database
+#SQLAlchemy Database Configuration 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = getenv('db_uri')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

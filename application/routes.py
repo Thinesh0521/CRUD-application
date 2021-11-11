@@ -3,15 +3,20 @@ from application import app, db
 from application.forms import AddStud, UpdateStud
 from application.models import Student
 
+#This is the index route where we are going to query on all our student data
 @app.route('/')
 def home():
     studs = Student.query.all()
     return render_template('index.html', records=studs)
 
-@app.route('/editRecord/<int:studno>', methods=['GET', 'POST'])
-def editRecordForm(studno):
+#This route is for inserting data to mysql database via html forms
+@app.route('/edit/<int:studno>', methods=['GET', 'POST'])
+
+#Edit Form section
+def edit(studno):
     form = UpdateStud()
     stud = Student.query.filter_by(studno=studno).first()
+    
     if request.method == 'POST':
         # Fetch form data
         stud.FullName = form.stud_name.data

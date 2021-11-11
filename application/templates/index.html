@@ -29,7 +29,6 @@
             <tr>
                     <td> <a href="{{ url_for('Studentdetails', studno = record.studno) }}"> {{ record.name }}</a> </td>
                     <td> {{record.course}} </td>
-                    <td> {{record.date}} </td>
                     <td> <a href="{{ url_for('editRecordForm', studno = record.studno) }}"> edit </a>, 
                         <a href="{{ url_for('deleteStudent', studno = record.studno) }}"> delete </a>
                     </td>
