@@ -3,21 +3,12 @@
     <br>
     <br>
     <br>
-    <a href="{{ url_for('saveRecord') }}"> New Record </a>
-    
-    <form action="{{ url_for('filterrecords') }}" method="POST">
-    <select name="course">
-                <option value="Devops"> Devops </option>
-                <option value="Software"> Software engineering </option>
-                <option value="Networking"> Networking Engineering </option>
-                <option value="Database"> Database </option>
-                <option value="all"> All Courses </option>
-    
-                </select>
-                <input type="submit" value="Filter">
-    </form>
+    <a href="{{ url_for('saveRecord') }}"> New Student </a>
+    <br>
+    <br>
+
     <table>
-        <tr bgcolor='Green'>
+        <tr bgcolor='light blue'>
             
             <td > Name </td>
             <td > Course</td>
