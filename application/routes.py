@@ -27,15 +27,6 @@ def edit(studno):
         return redirect("/")
     return render_template('Edit.html', form=form)
 
-#Filtering students
-@app.route("/filterrecords",methods=["POST"])
-def filterrecords():
-    if request.form["course"]=="all":
-        return redirect("/")
-    else:
-        data = Student.query.filter_by(course=request.form["course"]).all()
-        return render_template("index.html",records=data)
-
 #Adding new students
 @app.route("/saveRecord",methods=["GET","POST"])
 def saveRecord():
