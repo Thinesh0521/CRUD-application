@@ -39,7 +39,7 @@ def saveRecord():
         newstud = Student(name=name, course=course, phone=phone, email=email)
         db.session.add(newstud)
         db.session.commit()
-        return redirect("/")
+        return redirect("index.html")
     return render_template("input.html", form=form)
 
 @app.route("/Studentdetails/<int:studno>")

@@ -12,4 +12,4 @@ class Student(db.Model):
 class Course(db.Model):
     course_id= db.Column(db.Integer, primary_key =True)
     name=db.Column(db.String(50))
-    learner_id= db.Column(db.Integer, db.ForeignKey('student.id'))
+    learner_id= db.Column(db.Integer, db.ForeignKey(Student.stud_id))
