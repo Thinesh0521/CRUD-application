@@ -3,58 +3,13 @@ from application import app, db
 from application.forms import AddStud, UpdateStud
 from application.models import Student
 
-#This is the index route where we are going to query on all our student data
+#This is the index route where we are going to query on all 
 @app.route('/')
-def home():
-    studs = Student.query.all()
-    return render_template('index.html', records=studs)
+def index():
+    first_name = "David"
+    return render_template("index.html", first_name=first_name)
 
-#Adding new students
-@app.route('/addstudent', methods=["GET","POST"]) # Route to a save record of students
-def addstudent():
-    form = AddStud()
-    if request.method == 'POST':
-        name=form.stud_name.data
-        course=form.course.data
-        phone= form.phone.data
-        email= form.email.data
-        newstud = Student(FullName=name, courses=[course], phone=phone, email=email)
-        db.session.add(newstud)
-        db.session.commit()
-        return redirect('/')
-    return render_template("addstudent.html", form=form)
- 
+@app.route('/student/add', methods= ['GET', 'POST'])
+def add_student():
+    return render_template("add_students.html")
 
-#This route is for inserting data to mysql database via html forms
-@app.route('/edit', methods=['GET', 'POST'])
-
-#Edit Form section
-def edit(studno):
-    form = UpdateStud()
-    stud = Student.query.filter_by(studno=studno).first()
-    
-    if request.method == 'POST':
-        # Fetch form data
-        stud.FullName = form.stud_name.data
-        stud.phone = form.phone.data
-        stud.email = form.email.data
-        stud.courses= form.course.data
-        db.session.commit()
-        return redirect("/")
-    return render_template('Edit.html', form=form)
-
-
-
-@app.route("/Studentdetails/<int:studno>")
-def Studentdetails(studno):
-	data = Student.query.filter_by(studno=studno).first()
-	return render_template("Studentdetails.html",record=data)
-
-#Deleting Students
-
-@app.route("/deleteStudent/<int:studno>")
-def deleteStudent(studno):
-    stud = Student.query.filter_by(studno=studno).first()
-    db.session.delete(stud)
-    db.session.commit()
-    return redirect("/")
