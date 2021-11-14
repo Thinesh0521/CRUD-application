@@ -9,8 +9,24 @@ def home():
     studs = Student.query.all()
     return render_template('index.html', records=studs)
 
+#Adding new students
+@app.route('/addstudent', methods=["GET","POST"]) # Route to a save record of students
+def addstudent():
+    form = AddStud()
+    if request.method == 'POST':
+        name=form.stud_name.data
+        course=form.course.data
+        phone= form.phone.data
+        email= form.email.data
+        newstud = Student(FullName=name, courses=[course], phone=phone, email=email)
+        db.session.add(newstud)
+        db.session.commit()
+        return redirect('/')
+    return render_template("addstudent.html", form=form)
+ 
+
 #This route is for inserting data to mysql database via html forms
-@app.route('/edit/<int:studno>', methods=['GET', 'POST'])
+@app.route('/edit', methods=['GET', 'POST'])
 
 #Edit Form section
 def edit(studno):
@@ -22,25 +38,12 @@ def edit(studno):
         stud.FullName = form.stud_name.data
         stud.phone = form.phone.data
         stud.email = form.email.data
-        stud.course= form.course.data
+        stud.courses= form.course.data
         db.session.commit()
         return redirect("/")
     return render_template('Edit.html', form=form)
 
-#Adding new students
-@app.route("/saveRecord",methods=["GET","POST"])
-def saveRecord():
-    form = AddStud()
-    if request.method == 'POST':
-        name=form.stud_name.data
-        course=form.course.data
-        phone= form.phone.data
-        email= form.email.data
-        newstud = Student(name=name, course=course, phone=phone, email=email)
-        db.session.add(newstud)
-        db.session.commit()
-        return redirect("index.html")
-    return render_template("input.html", form=form)
+
 
 @app.route("/Studentdetails/<int:studno>")
 def Studentdetails(studno):
