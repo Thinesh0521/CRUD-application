@@ -1,32 +1,14 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
 
-<h1>See all the students</h1>
-
-<a href="{{url_for('addstudent')}}">Add a new student</a>
-
-<table>
-    <tr bgcolor='Blue'>
-
-        <td> Full Name </td>
-        <td> Course </td>
-        <td> Operations</td>
-
-    </tr>
 
 
 
-{% for student in students %}
-    <tr>
-        <td> <a href="{{ url_for('Studentdetails', studid = record.stud_id) }}"> {{ record.name }}</a> </td>
-        <td> {{record.course}} </td>
-        <td> <a href="{{ url_for('edit', studid= record/stud_id) }}"> edit </a></td> 
-        <td> <a href="{{ url_for('delete', studid= record/stud_id) }}"> delete </a></td>
-    
-    </tr>
 
-{% endfor %}
+
 
 {% endblock %}
-</table>
+
