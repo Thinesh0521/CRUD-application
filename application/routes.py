@@ -6,7 +6,6 @@ from application.models import Students, Posts
 #This is the index route where we are going to query on all 
 @app.route('/')
 def index():
-    first_name = "David"
     return render_template("index.html", first_name=first_name)
 
 @app.route('/student/add', methods= ['GET', 'POST'])
@@ -17,8 +16,16 @@ def add_student():
         student= Students.query.filter_by(email=form.email.data).first()
         if student is None:
             student = Students(name=form.name.data, email=form.email.data)
+            db.session.add(student)
+            db.session.commit()
+          name = form.name.data = ''
+          form.name.data = ''
+          form.email.data = ''
+        our_students = Students.query.order_by(Students)
         return render_template("add_students.html", form=form )
-
+            form=form,
+            name=name,
+            our_students=our_students)
 # Add Post Page
 @app.route('/add_post', methods= ['GET', 'POST'])
 def add_post():
