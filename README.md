@@ -1,5 +1,5 @@
 # CRUD-application
-# QA-DevOps-Fundamental-Project- MCQ App:  
+# QA-DevOps-Fundamental-Project- Student & Blog App:  
 This repository contains my deliverable for the QA devops fundamental project.
 
 ## Contents:
@@ -12,3 +12,5 @@ The brief for this project was to design and produce a web app of my choosing. T
 
 ## App Design:
 I have chosen to build a blog application web, which allows students to write posts and concerns (create functionality), view their posts (read functionality), update posts (update functionality) and delete posts (delete functionality). The database for this project comprises a Student table and posts table, with each student associated with multiple posts (one-to-many relationship). 
+
+## Couldnt progress any further due to programs crashing 
