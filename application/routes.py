@@ -6,7 +6,7 @@ from application.models import Students, Posts
 #This is the index route where we are going to query on all 
 @app.route('/')
 def index():
-    return render_template("index.html", first_name=first_name)
+    return render_template("index.html")
 
 @app.route('/student/add', methods= ['GET', 'POST'])
 def add_student():
@@ -63,3 +63,10 @@ def edit_post(id):
     form.course.data = post.course 
     form.content.data = post.content
     return render_template('edit_post.html', form=form)
+
+@app.route('/posts/delete/<int:id>')
+def delete_post(id):
+    post_to_delete = Posts.query.get_or_404(id)
+    db.session.delete(post_to_delete)
+    db.session.commit()
+    return redirect("/")
