@@ -7,8 +7,11 @@
 {% if name %}
     <h1>Student Added!</h1>
     <br/>
+{% for our_student in our_students %}
+    {{ our_student.id }}. {{our_student.name
+    }} - {{our_student.email }} <br/>
 
-    <br/><br/>
+{% endfor %}
 
 {% else %}
     <h1>Student list</h1>
