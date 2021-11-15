@@ -10,7 +10,8 @@ import os
 app = Flask(__name__)
 
 #SQLAlchemy Database Configurated
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///students.db"
+#app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///students.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/our_students'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #app.config['SECRET_KEY'] = getenv('secretkey')
 SECRET_KEY = os.urandom(32)
