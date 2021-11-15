@@ -14,6 +14,7 @@ class Students(db.Model):
 #Student can have many posts
 posts = db.relationship('Posts', backref='poster')
 
+#Create a blog Post model for students
 class Posts(db.Model):
     id= db.Column(db.Integer, primary_key=True)
     course= db.Column(db.String(50))

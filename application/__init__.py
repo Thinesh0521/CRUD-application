@@ -3,7 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from os import getenv
 import pymysql
 import os
-from datetime import datetime
+
+
 
 #Create a Flask Instance
 app = Flask(__name__)
@@ -17,6 +18,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 #Initialise the database
 db = SQLAlchemy(app)
+
 
 import application.models
 import application.forms

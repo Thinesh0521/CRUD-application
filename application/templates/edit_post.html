@@ -1,0 +1,25 @@
+
+
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.course.label(
+    class= "form-label") }}
+
+    {{ form.course(
+    class= "form-control") }}
+    <br/>
+
+    {{ form.content.label(
+    class= "form-label") }}
+
+    {{ form.content(
+    class= "form-control", rows="8") }}
+    <br/>
+    
+    {{ form.submit(class="btn 
+    btn-secondary") }}
+
+    
+</form>
